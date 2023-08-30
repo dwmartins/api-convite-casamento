@@ -3,7 +3,7 @@ const mysql = require('mysql2/promise');
 const logger = require('./logger');
 
 class DatabaseConnection {
-    poo;
+    pool;
 
     constructor() {
         this.pool = mysql.createPool({
@@ -18,6 +18,9 @@ class DatabaseConnection {
         try {
             await this.pool.query('SELECT 1+1');
             console.log(`Conexão com o banco de dados estabelecida com sucesso.`);
+
+            const configTables = require('./configTables');
+            configTables.createAll();
 
             return this.pool;
         } catch (error) {
