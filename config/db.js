@@ -1,6 +1,6 @@
+const logger = require('./logger');
 require('dotenv').config();
 const mysql = require('mysql2/promise');
-const logger = require('./logger');
 
 class DatabaseConnection {
     pool;

@@ -1,19 +1,19 @@
-'use strict';
-
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT;
+const peopleRouter = require('./src/routes/peopleRoute');
 require('./config/db');
 
 app.use(cors());
 app.use(express.json());
 
-
 app.get('/', (req, res) => {
     res.status(200).sendFile(__dirname + '/index.html');
 });
+
+app.use('/', peopleRouter);
 
 app.use((req, res, next) => {
     const error = new Error('Rota não encontrada.');
