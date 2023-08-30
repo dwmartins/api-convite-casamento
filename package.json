@@ -1,0 +1,11 @@
+{
+  "name": "api-convite-casamento",
+  "version": "1.0.0",
+  "description": "Api do meu convite de casamento ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Douglas Welligton Martins",
+  "license": "ISC"
+}
