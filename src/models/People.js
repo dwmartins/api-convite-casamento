@@ -3,6 +3,7 @@ const DataBase = require('../../config/db');
 class People {
     db;
     sql;
+    listPeople;
 
     constructor() {
         this.db = new DataBase;
@@ -19,6 +20,16 @@ class People {
             return {return: true, msg: `Dados inseridos com sucesso.`}
         } catch (error) {
             return {return: false, msg: `Erro ao inserir os dados, tente novamente.`}
+        }
+    }
+
+    async listOfPeople() {
+        try {
+            this.listPeople = await this.db.pool.query('SELECT * FROM peoples');
+
+            return {return: true, listPeople: this.listPeople[0]}
+        } catch (error) {
+            return {return: false, msg: error}
         }
     }
 }

@@ -13,8 +13,22 @@ async function insertPeoples(req, res) {
     }
 }
 
+async function getListOfPeoples(req, res) {
+    const data = await people.listOfPeople();
+
+    if(data.return) {
+        sendResponse(res, 200, data.listPeople);
+    } else {
+        sendResponse(res, 500, data);
+    }
+}
+
+
 function sendResponse(res, statusCode, data) {
     res.status(statusCode).json(data);
 }
 
-module.exports = { insertPeoples }
+module.exports = { 
+    insertPeoples,
+    getListOfPeoples
+ }
