@@ -6,7 +6,13 @@ const PORT = process.env.PORT;
 const peopleRouter = require('./src/routes/peopleRoute');
 require('./config/db');
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://convite-casamento-front.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get('/', (req, res) => {
