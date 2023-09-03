@@ -9,6 +9,7 @@ require('./config/db');
 const corsOptions = {
   origin: 'https://convite-casamento-front.vercel.app',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  exposedHeaders: 'Authorization, X-Custom-Header',
   optionsSuccessStatus: 204,
 };
 

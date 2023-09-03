@@ -17,7 +17,7 @@ async function getListOfPeoples(req, res) {
     const data = await people.listOfPeople();
 
     if(data.return) {
-        sendResponse(res, 200, data.listPeople);
+        sendResponse(res, 201, data.listPeople);
     } else {
         sendResponse(res, 500, data);
     }
