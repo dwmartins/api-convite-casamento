@@ -1,4 +1,6 @@
 const People = require('../models/People');
+const sendEmail = require('../controllers/sendEmail');
+const getDateTime = require('../utilities/getDateTime')
 
 const people = new People();
 
@@ -7,6 +9,8 @@ async function insertPeoples(req, res) {
     const insertPeople = await people.newPeople(reqPeople);
 
     if(insertPeople.return) {
+        await sendEmail.newPeople(reqPeople.pe_name, reqPeople.pe_qtd_convidados, getDateTime.getDateTime());
+        console.log(`Nova confirmação de presença de ${reqPeople.pe_name} - ${getDateTime.getDateTime()}`);
         sendResponse(res, 201, insertPeople);
     } else {
         sendResponse(res, 500, insertPeople);
